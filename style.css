@@ -1,0 +1,230 @@
+body {
+    margin: 0;
+    padding: 0;
+    /* Gradiente de fondo */
+    background: linear-gradient(120deg, #66ea9f 0%, #a24b68 100%);
+    min-height: 100vh;
+    font-family: Roboto, 'Open Sans', 'Helvetica Neue', sans-serif;
+    /* Eliminar scroll vertical */
+    overflow: hidden;
+}
+
+.container {
+    /* Contenedior con flexbox vertical */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    gap: 15px;
+}
+
+canvas {
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.1);
+    background: rgba(49, 49, 49, 0.1);
+    max-height: 80vh;
+    object-fit: contain;
+}
+
+/* Estilos para la información del juego (prmer hijo del flexbox) */
+.game-info {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(20px) saturate(180%);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 15px 25px;
+    text-align: center;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    color: white;
+    font-weight: 600;
+    font-size: 16px;
+    width: 90%;
+    max-width: 500px;
+}
+
+/* Estilos para las estadísticas */
+.game-info span {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 4px 12px;
+    border-radius: 12px;
+    margin: 0 5px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    font-weight: 700;
+    min-width: 40px;
+    display: inline-block;
+}
+
+/* Estilos para los indicadores de nivel, tiempo y casillas */
+#level {
+    background: linear-gradient(135deg, #FF6B6B, #FF8E53);
+    color: white;
+}
+
+#timer {
+    background: linear-gradient(135deg, #4ECDC4, #44A08D);
+    color: white;
+}
+
+#greenCount {
+    background: linear-gradient(135deg, #A8E6CF, #56AB2F);
+    color: white;
+}
+
+#totalTiles {
+    background: rgba(255, 255, 255, 0.25);
+    color: white;
+}
+
+/* Estilos para el mensaje de juego terminado */
+.game-over {
+    background: linear-gradient(135deg, #FF6B6B, #C6426E) !important;
+    color: white !important;
+    font-size: 18px;
+    font-weight: 700;
+    padding: 20px;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.02);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Estilos para el modal de pausa */
+.pause-modal {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    x: 0;
+    y: 0;
+    padding: 0;
+    margin: 0;
+    /* Make the background to be blured insted of color (full background blur*/
+    backdrop-filter: blur(4px) saturate(120%);
+    background: rgba(60, 60, 60, 0.173);
+    color: white;
+    z-index: 1000;
+}
+
+.pause-modal-box {
+    position: absolute;
+    top: 58%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 300px;
+    font-size: 24px;
+    font-weight: 700;
+    padding: 30px;
+    background: rgb(49, 49, 49);
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.1);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    z-index: 1001;
+}
+
+.eg-modal {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    x: 0;
+    y: 0;
+    padding: 0;
+    margin: 0;
+    /* Make the background to be blured insted of color (full background blur*/
+    backdrop-filter: blur(4px) saturate(120%);
+    background: rgba(60, 60, 60, 0.173);
+    color: white;
+    z-index: 1000;
+}
+
+.eg-modal-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 340px;
+    height: 340px;
+    font-size: 24px;
+    font-weight: 700;
+    padding: 30px;
+    background: rgb(49, 49, 49);
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.1);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    z-index: 1001;
+}
+
+.pause-text {
+    text-align: center;
+}
+
+.eg-text {
+    text-align: center;
+    animation: alternate 2s infinite;
+}
+
+.pause-hint {
+    font-size: 16px;
+    margin-top: 15px;
+    opacity: 0.8;
+}
+
+
+.stats-container {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 8px;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 8px 12px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.stat-label {
+    font-size: 11px;
+    opacity: 0.8;
+    margin-bottom: 4px;
+    font-weight: 500;
+}
+
+.stat-value {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+/* Efectos de hover */
+.game-info:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+    transition: all 0.3s ease;
+}

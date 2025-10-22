@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Color Tiles Game</title>
+    <link rel="icon" href="favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <script id="myVertexShader" type="x-shader/x-vertex">#version 300 es
+        in vec3 VertexPosition;
+        uniform float pointSize;
+
+        void main()  {
+            gl_Position = vec4 (VertexPosition, 1.0);
+            gl_PointSize = pointSize;
+        }
+    </script>
+    <script id="myFragmentShader" type="x-shader/x-fragment">#version 300 es
+        precision mediump float;
+        uniform vec4 myColor; // Var to save the color to draw
+        out vec4 fragmentColor;
+        void main() {
+            fragmentColor = myColor;
+        }
+    </script>
+</head>
+
+<body>
+    <div id="pauseModal" class="pause-modal" style="display: none;">
+        <div class="pause-modal-box">
+            <div class="pause-text">JUEGO EN PAUSA</div>
+            <div class="pause-hint pause-text">Presiona P o ESPACIO para continuar</div>
+        </div>
+    </div>
+    <div id="egModal" class="eg-modal" style="display: none;">
+        <div class="eg-modal-box">
+            <div class="eg-text">¡¡EASTER EGG!!</div>
+            <div class="eg-text">Follow me on GitHub</div>
+            <div class="eg-hint eg-text"> <a href="https://github.com/raamonsiu">raamonsiu</a></div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="game-info">
+            <div style="margin-bottom: 12px; font-size: 20px; font-weight: 700;">
+                COLOR TILES GAME
+            </div>
+            <div class="stats-container">
+                <div class="stat-item">
+                    <div class="stat-label">NIVEL</div>
+                    <div id="level" class="stat-value">1</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">TIEMPO</div>
+                    <div id="timer" class="stat-value">60s</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">VERDES</div>
+                    <div id="greenCount" class="stat-value">0</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">TOTAL</div>
+                    <div id="totalTiles" class="stat-value">25</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="gameOver" class="game-info game-over" style="display: none;">
+            ¡HAS PERDIDO! Volviendo al nivel 1...
+        </div>
+
+        <canvas id="myCanvas" width="500" height="500">
+            El Navegador no soporta HTML5
+        </canvas>
+
+    </div>
+
+    <script src="game.js"></script>
+</body>
+
+</html>
