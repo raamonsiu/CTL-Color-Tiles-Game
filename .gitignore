@@ -1,0 +1,5 @@
+.vscode/
+*.zip
+favicon_40x41.png
+
+*.env

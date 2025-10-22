@@ -247,6 +247,7 @@ function changeTileColor(tile, color, isGreen) {
 // --------------------------------
 // Manejar clics en las casillas
 function click(event) {
+    let clickedTileOrBonusPoint = false;
     if (!gameState.gameActive) return;
 
     let rect = gl.canvas.getBoundingClientRect();
@@ -254,31 +255,37 @@ function click(event) {
     let mouseY = event.clientY - rect.top;
 
     // Primero verificar puntos bonus (tienen prioridad)
-    for (let i of gameState.bonusPoints) {
-        let bonusPoint = gameState.bonusPoints[i];
+    // make a gameState.bonusPoints iterator:
+    let bonusPointIterator = 0;
+    while (!clickedTileOrBonusPoint && bonusPointIterator < gameState.bonusPoints.length) {
+        let bonusPoint = gameState.bonusPoints[bonusPointIterator];
         if (isInsideBonusPoint(mouseX, mouseY, bonusPoint)) {
             collectBonusPoint(bonusPoint);
-            return; // Salir después de recoger un bonus, no queremos que el clic se haga en el bonus point y en la casilla a la vez
+            drawScene(); // Salir después de recoger un bonus, no queremos que el clic se haga en el bonus point y en la casilla a la vez
+            clickedTileOrBonusPoint = true;
         }
+        bonusPointIterator++;
     }
-
     // Luego verificar casillas normales
-    for (let tile of gameState.tiles) {
+    let tileIterator = 0;
+    while (!clickedTileOrBonusPoint && tileIterator < gameState.tiles.length) {
+        const tile = gameState.tiles[tileIterator];
         if (isInsideTile(mouseX, mouseY, tile)) {
             if (gameState.waitingForFirstClick) {
                 startGame();
             }
             if (!tile.isGreen) {
+                clickedTileOrBonusPoint = true;
                 changeTileColor(tile, GREEN, true);
                 gameState.greenTiles++;
                 updateUI();
                 checkWinCondition();
+                drawScene();
             }
-            break;
         }
+        tileIterator++;
     }
 
-    drawScene();
 }
 // Manejar tecla de pausa
 function togglePause(event) {
