@@ -1,16 +1,14 @@
 body {
     margin: 0;
     padding: 0;
-    /* Gradiente de fondo */
     background: linear-gradient(120deg, #66ea9f 0%, #a24b68 100%);
     min-height: 100vh;
     font-family: Roboto, 'Open Sans', 'Helvetica Neue', sans-serif;
-    /* Eliminar scroll vertical */
+    /* Remove scroll vertical */
     overflow: hidden;
 }
 
 .container {
-    /* Contenedior con flexbox vertical */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -28,7 +26,6 @@ canvas {
     object-fit: contain;
 }
 
-/* Estilos para la información del juego (prmer hijo del flexbox) */
 .game-info {
     background: rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(20px) saturate(180%);
@@ -44,7 +41,6 @@ canvas {
     max-width: 500px;
 }
 
-/* Estilos para las estadísticas */
 .game-info span {
     background: rgba(255, 255, 255, 0.2);
     padding: 4px 12px;
@@ -56,7 +52,6 @@ canvas {
     display: inline-block;
 }
 
-/* Estilos para los indicadores de nivel, tiempo y casillas */
 #level {
     background: linear-gradient(135deg, #FF6B6B, #FF8E53);
     color: white;
@@ -77,7 +72,6 @@ canvas {
     color: white;
 }
 
-/* Estilos para el mensaje de juego terminado */
 .game-over {
     background: linear-gradient(135deg, #FF6B6B, #C6426E) !important;
     color: white !important;
@@ -101,7 +95,6 @@ canvas {
     }
 }
 
-/* Estilos para el modal de pausa */
 .pause-modal {
     position: absolute;
     width: 100%;
@@ -110,7 +103,6 @@ canvas {
     y: 0;
     padding: 0;
     margin: 0;
-    /* Make the background to be blured insted of color (full background blur*/
     backdrop-filter: blur(4px) saturate(120%);
     background: rgba(60, 60, 60, 0.173);
     color: white;
@@ -147,7 +139,6 @@ canvas {
     y: 0;
     padding: 0;
     margin: 0;
-    /* Make the background to be blured insted of color (full background blur*/
     backdrop-filter: blur(4px) saturate(120%);
     background: rgba(60, 60, 60, 0.173);
     color: white;
@@ -191,7 +182,6 @@ canvas {
     opacity: 0.8;
 }
 
-
 .stats-container {
     display: flex;
     justify-content: center;
@@ -222,7 +212,6 @@ canvas {
     font-weight: 700;
 }
 
-/* Efectos de hover */
 .game-info:hover {
     background: rgba(255, 255, 255, 0.2);
     transform: translateY(-2px);
