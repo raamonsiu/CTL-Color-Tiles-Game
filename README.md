@@ -1,3 +1,9 @@
+<p align="center">
+  <a href="https://skillicons.dev">
+    <img src="https://skillicons.dev/icons?i=js,html,css,tailwind,github" />
+  </a>
+</p>
+
 # Color Tiles Game
 
 A fast-paced, WebGL-based game where players race against time to turn red tiles green while competing with the machine.
@@ -85,4 +91,4 @@ The game features 15 challenging levels with progressive difficulty:
 
 ---
 
-Created by Ramon López i Cros for Computer Graphics course at University of Girona.
+> Created by Ramon López i Cros for Computer Graphics course at University of Girona.
